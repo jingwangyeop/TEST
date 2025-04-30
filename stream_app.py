@@ -1,7 +1,18 @@
 import streamlit as st
-st.write("Hello World why not?")
+!pip install openai
+import openai
+
 
 
 apikey = st.text_input("입력해라 :")
 
-st.write(apikey)
+client = OpenAI(apikey)
+
+response = client.chat.completions.create(
+    model = "gpt-4.1-mini",
+    messages = [
+        {"role": "system", "content": "You are a helpful chat bot"}
+    ]
+)
+
+st.write(response.choices[0].message.content)
