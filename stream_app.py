@@ -6,12 +6,16 @@ apikey = st.text_input("입력해라 :")
 
 client = OpenAI(api_key=apikey)
 
+gg = st.text_input("말해라 :")
+
+
 response = client.chat.completions.create(
     model = "gpt-4o-mini",
     messages = [
-        {"role": "system", "content": gg = st.text_input("말해라 :"}
+        {"role": "system", "content": gg}
     ]
 )
+
 
 st.write(response.choices[0].message.content)
 
