@@ -1,12 +1,12 @@
 import streamlit as st
 !pip install openai
 import openai
-
+from openai import OpenAI
 
 
 apikey = st.text_input("입력해라 :")
 
-client = OpenAI(apikey)
+client = OpenAI(api_key=apikey)
 
 response = client.chat.completions.create(
     model = "gpt-4.1-mini",
