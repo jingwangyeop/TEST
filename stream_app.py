@@ -4,4 +4,4 @@ st.write("Hello World why not?")
 
 apikey = st.text_input("입력해라 :")
 
-print(apikey)
+st.write(print(apikey))
