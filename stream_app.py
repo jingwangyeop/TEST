@@ -1,5 +1,4 @@
 import streamlit as st
-pip install openai
 import openai
 from openai import OpenAI
 
