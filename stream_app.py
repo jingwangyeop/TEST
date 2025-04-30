@@ -7,20 +7,21 @@ apikey = st.text_input("입력해라 :")
 client = OpenAI(api_key=apikey)
 
 
-time.sleep(2)
 
-gg = st.text_input("말해라 :")
+if apikey != "" :
 
-time.sleep(1)
-
-response = client.chat.completions.create(
-    model = "gpt-4o-mini",
-    messages = [
-        {"role": "system", "content": gg}
-    ]
-)
+  gg = st.text_input("말해라 :")
 
 
-st.write(response.choices[0].message.content)
+
+  response = client.chat.completions.create(
+      model = "gpt-4o-mini",
+      messages = [
+          {"role": "system", "content": gg}
+      ]
+  )
+
+
+  st.write(response.choices[0].message.content)
 
 
