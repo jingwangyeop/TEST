@@ -9,13 +9,10 @@ client = OpenAI(api_key=apikey)
 response = client.chat.completions.create(
     model = "gpt-4o-mini",
     messages = [
-        {"role": "system", "content": "You are a helpful chat bot"}
+        {"role": "system", "content": gg = st.text_input("말해라 :"}
     ]
 )
 
 st.write(response.choices[0].message.content)
 
 
-gg = st.text_input("말해라 :")
-
-st.write(gg)
