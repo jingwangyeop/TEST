@@ -14,3 +14,8 @@ response = client.chat.completions.create(
 )
 
 st.write(response.choices[0].message.content)
+
+
+gg = st.text_input("말해라 :")
+
+st.write(gg)
