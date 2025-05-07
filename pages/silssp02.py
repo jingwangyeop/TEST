@@ -1,18 +1,13 @@
-"""
+
 import streamlit as st
 from openai import OpenAI
-st.title("jin's chat")
 
 apikey = st.text_input("OPENAI API KEY를 입력하세요 :", type = "password")
 client = OpenAI(api_key=apikey)
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-"""
-
 import streamlit as st
 
-st.title("Echo Bot")
+st.title("Jin's chat bot")
 
 # Initialize chat history in session state
 if "messages" not in st.session_state:
