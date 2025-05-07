@@ -431,7 +431,7 @@ if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong Nationa
     st.session_state.messageslb.append({"role": "user", "content": ppt})
     st.session_state.messageslb.append({"role": "AI", "content": response.output[0].content[0].text})
     
-for message in st.session_state.messages1:
+for message in st.session_state.messageslb:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
