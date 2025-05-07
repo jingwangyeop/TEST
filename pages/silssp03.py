@@ -428,10 +428,10 @@ if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong Nationa
         previous_response_id=start.id
         input=ppt
     )
-     st.session_state.messages.append({"role": "user", "content": ppt})
-     st.session_state.messages.append({"role": "AI", "content": response.output[0].content[0].text})
+     st.session_state.messages1.append({"role": "user", "content": ppt})
+     st.session_state.messages1.append({"role": "AI", "content": response.output[0].content[0].text})
     
-for message in st.session_state.messages:
+for message in st.session_state.messages1:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
