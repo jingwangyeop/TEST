@@ -2,13 +2,13 @@ import streamlit as st
 from openai import OpenAI
 import time
 
-apikey = st.text_input("openai api key를 입력하세요 :")
+apikey = st.text_input("openai api key를 입력하세요 :", type = "password")
 
 client = OpenAI(api_key=apikey)
 
-room = st.session_state
 
-st.write(room.type)
+if 'apikey' not in st.session_state:
+    st.session_state.apikey = apikey
 
 if apikey != "" :
 
