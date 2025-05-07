@@ -1,7 +1,7 @@
 
 import streamlit as st
 from openai import OpenAI
-
+apikey = st.session_state.api_key
 client = OpenAI(api_key=apikey)
 
 import streamlit as st
@@ -17,9 +17,14 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-# Accept user input
-if prompt := st.chat_input("Say something"):
-    # Add user message
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    # Add bot response (echo)
-    st.session_state.messages.append({"role": "assistant", "content": prompt})
+while True :
+    if ppt := st.chat_input("최근에나온 AI에게 질문을 해보세요. 채팅을 멈추고싶으면 '그만'을 치세요.:"):
+        response = client.responses.create(
+            model="gpt-4.1-mini",
+            input=ppt
+        )
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        st.session_state.messages.append({"role": "AI", "content": response.output[0].content[0].text})
+    if ppt == '그만' :
+        break
+
