@@ -425,7 +425,7 @@ if "messages1" not in st.session_state:
 if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong National University Library. Ask me anything you want to know. :")
      response = client.responses.create(
         model="gpt-4.1-mini",
-        previous_response_id=start.id
+        previous_response_id=start.id,
         input=ppt
     )
      st.session_state.messages1.append({"role": "user", "content": ppt})
