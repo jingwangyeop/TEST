@@ -11,7 +11,7 @@ st.title("Jin's chat bot")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-if ppt := st.chat_input("최근에나온 AI에게 질문을 해보세요. 채팅을 멈추고싶으면 '그만'을 치세요.:"):
+if ppt := st.chat_input("Ask a question to the latest AI. If you want to stop chatting, type 'stop':"):
      response = client.responses.create(
         model="gpt-4.1-mini",
         input=ppt
