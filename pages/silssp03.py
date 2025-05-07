@@ -423,13 +423,13 @@ if "messageslb" not in st.session_state:
     st.session_state.messageslb = []
 
 if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong National University Library. Ask me anything you want to know. :")
-     response = client.responses.create(
+    response = client.responses.create(
         model="gpt-4.1-mini",
         previous_response_id=start.id,
         input=[{"role": "user", "content": ppt}]
     )
-     st.session_state.messageslb.append({"role": "user", "content": ppt})
-     st.session_state.messageslb.append({"role": "AI", "content": response.output[0].content[0].text})
+    st.session_state.messageslb.append({"role": "user", "content": ppt})
+    st.session_state.messageslb.append({"role": "AI", "content": response.output[0].content[0].text})
     
 for message in st.session_state.messages1:
     with st.chat_message(message["role"]):
