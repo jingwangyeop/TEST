@@ -422,7 +422,7 @@ start = client.responses.create(
 if "messageslb" not in st.session_state:
     st.session_state.messageslb = []
 
-if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong National University Library. Ask me anything you want to know. :")
+if ppt := st.chat_input("I'm a 19th-year professional library in Pukyong National University Library. Ask me anything you want to know. :"):
     response = client.responses.create(
         model="gpt-4.1-mini",
         previous_response_id=start.id,
