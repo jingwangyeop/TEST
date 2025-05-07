@@ -24,8 +24,6 @@ def what():
         # 응답을 화면에 표시
         st.write(response.choices[0].message.content)
     
-    return gg  # 질문 값 반환
-
 
 if apikey != "":
     # 사용자 질문 받기 및 처리
