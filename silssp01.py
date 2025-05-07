@@ -26,8 +26,6 @@ def what():
     
     return gg  # 질문 값 반환
 
-# apikey가 입력되었을 때만 실행
-apikey = st.text_input("API 키를 입력하세요:")
 
 if apikey != "":
     # 사용자 질문 받기 및 처리
