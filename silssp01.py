@@ -3,7 +3,7 @@ from openai import OpenAI
 import time
 
 apikey = st.text_input("openai api key를 입력하세요 :", type = "password")
-
+st.session_state.append(apikey)
 client = OpenAI(api_key=apikey)
 
 @st.cache_data
