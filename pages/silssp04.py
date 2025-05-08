@@ -7,7 +7,12 @@ client = OpenAI(api_key=apikey)
 st.title("Jin's chatPDF bot")
 pdf = st.file_uploader("PDF파일을 올려주세요")
 
+
 if pdf !=None :
+  pdffile = client.files.create(
+    file=open("paper.pdf", "rb"),
+    purpose="user_data"
+  )
   prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
 if prompt !="":
@@ -19,7 +24,7 @@ if prompt !="":
         "content": [
           {
             "type": "input_file",
-            "file_id": pdf.id,
+            "file_id": pdffile.id,
           },
           {
             "type": "input_text",
