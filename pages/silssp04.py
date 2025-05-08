@@ -10,7 +10,7 @@ pdf = st.file_uploader("PDF파일을 올려주세요")
 
 if pdf !=None :
   pdffile = client.files.create(
-    file=open(pdf.name, "rb"),
+    file=pdf,
     purpose="user_data"
   )
   prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
