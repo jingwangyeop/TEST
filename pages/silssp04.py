@@ -47,5 +47,6 @@ if prompt !="":
       "type":"file_search",
       "vector_store_ids" :[vector_store.id],
       "max_num_results":3
+    }]
   )
   st.write(response.output_text)
