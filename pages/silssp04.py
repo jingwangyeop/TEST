@@ -29,4 +29,4 @@ if prompt !="":
       }
     ]
   )
-
+  st.write(response.output_text)
