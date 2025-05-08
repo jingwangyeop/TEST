@@ -13,6 +13,16 @@ if pdf !=None :
     file=pdf,
     purpose="user_data"
   )
+  vector_store = client.vector_stores.create(name="BUSAN")
+
+  file_paths = [pdffile]
+
+  file_streams = [open(path, "rb") for path in file_paths]
+
+  file_batch = client.vector_stores.file_batches.upload_and_poll(
+    vector_store_id=vector_store.id,
+    files=file_streams
+  )
   prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
 if prompt !="":
@@ -32,6 +42,10 @@ if prompt !="":
           },
         ]
       }
-    ]
+    ],
+    tools=[{
+      "type":"file_search",
+      "vector_store_ids" :[vector_store.id],
+      "max_num_results":3
   )
   st.write(response.output_text)
