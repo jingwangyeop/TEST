@@ -15,13 +15,9 @@ if pdf !=None :
   )
   vector_store = client.vector_stores.create(name="BUSAN")
 
-  file_paths = [pdffile]
-
-#  file_streams = [open(path, "rb") for path in file_paths]
-  file_streams = [pdffile]
   file_batch = client.vector_stores.file_batches.upload_and_poll(
     vector_store_id=vector_store.id,
-    files=file_streams
+    files=[pdf]
   )
   prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
