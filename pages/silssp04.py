@@ -6,8 +6,7 @@ client = OpenAI(api_key=apikey)
 
 st.title("Jin's chatPDF bot")
 pdf = st.file_uploader("PDF파일을 올려주세요")
-st.write(type(pdf))
-"""
+
 if pdf !=null :
   prompt = st.text.input("PDF 내용에 대해 질문해주세요 :")
 
@@ -30,4 +29,4 @@ if prompt !="":
       }
     ]
   )
-"""
+
