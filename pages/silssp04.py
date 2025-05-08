@@ -18,7 +18,7 @@ if pdf !=None :
   file_paths = [pdffile]
 
 #  file_streams = [open(path, "rb") for path in file_paths]
-  file_streams = [pdfffile]
+  file_streams = [pdffile]
   file_batch = client.vector_stores.file_batches.upload_and_poll(
     vector_store_id=vector_store.id,
     files=file_streams
