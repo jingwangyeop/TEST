@@ -25,8 +25,7 @@ if pdf is not None and st.session_state.vector_store is None:
 
     st.session_state.vector_store = vector_store
     st.session_state.pdffile = pdffile
-
-prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
+    prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
 if prompt != "":
     response = client.responses.create(
