@@ -11,7 +11,9 @@ if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
 if 'pdffile' not in st.session_state:
     st.session_state.pdffile = None
-
+if 'ppt' not in st.session_state:
+    st.session_state.ppt = None
+    
 if pdf !=None and st.session_state.vector_store is None :
   pdffile = client.files.create(
     file=pdf,
