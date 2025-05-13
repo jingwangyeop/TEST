@@ -7,21 +7,26 @@ client = OpenAI(api_key=apikey)
 st.title("Jin's chatPDF bot")
 pdf = st.file_uploader("PDF파일을 올려주세요")
 
+if 'vector_store' not in st.session_state:
+    st.session_state.vector_store = None
+if 'pdffile' not in st.session_state:
+    st.session_state.pdffile = None
 
-if pdf !=None :
+if pdf !=None and st.session_state.vector_store is None :
   pdffile = client.files.create(
     file=pdf,
     purpose="user_data"
   )
-  vector_store = client.vector_stores.create(name="BUSAN")
+  vector_store = client.vector_stores.create(name="silssp04")
 
   file_batch = client.vector_stores.file_batches.upload_and_poll(
     vector_store_id=vector_store.id,
     files=[pdf]
   )
-  prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
+  st.session_state.vector_store = vector_store
+  st.session_state.pdffile = pdffile
 
-
+prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
 if prompt !="":
   response = client.responses.create(
@@ -32,7 +37,7 @@ if prompt !="":
         "content": [
           {
             "type": "input_file",
-            "file_id": pdffile.id,
+            "file_id": st.session_state.pdffile.id,
           },
           {
             "type": "input_text",
@@ -43,11 +48,11 @@ if prompt !="":
     ],
     tools=[{
       "type":"file_search",
-      "vector_store_ids" :[vector_store.id],
+      "vector_store_ids" :[st.session_state.vector_store.id],
       "max_num_results":3
     }]
   )
   st.write(response.output_text)
   def delete ():
-    dltvts = client.vector_stores.delete(vector_store.id)
+    dltvts = client.vector_stores.delete(st.session_state.vector_store.id)
   st.button("Delete Vector Store", on_click=delete)
