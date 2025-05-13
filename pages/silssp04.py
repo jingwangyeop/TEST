@@ -21,6 +21,8 @@ if pdf !=None :
   )
   prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
+
+
 if prompt !="":
   response = client.responses.create(
     model="gpt-4.1-mini",
@@ -46,3 +48,6 @@ if prompt !="":
     }]
   )
   st.write(response.output_text)
+  def delete ():
+    dltvts = client.vector_stores.delete(vector_store.id)
+  st.button("Delete Vector Store", on_click=delete)
