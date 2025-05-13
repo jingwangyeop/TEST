@@ -23,7 +23,7 @@ if pdf is not None and st.session_state.pdffile == None and st.session_state.vec
     purpose="user_data"
   )
   vector_store = client.vector_stores.create(name="silssp04")
-
+  time.sleep(0.1)
   file_batch = client.vector_stores.file_batches.upload_and_poll(
     vector_store_id=vector_store.id,
     files=[pdf]
@@ -31,6 +31,7 @@ if pdf is not None and st.session_state.pdffile == None and st.session_state.vec
   st.session_state.vector_store = vector_store
   st.session_state.pdffile = pdffile
   st.session_state.uploaded = True
+  time.sleep(0.3)
 def delete():
   if "vector_store" in st.session_state and st.session_state.vector_store is not None:
       client.vector_stores.delete(st.session_state.vector_store.id)
