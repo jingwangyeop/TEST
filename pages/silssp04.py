@@ -2,6 +2,8 @@ import streamlit as st
 from openai import OpenAI
 apikey = st.session_state.api_key
 client = OpenAI(api_key=apikey)
+import time
+
 
 if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
@@ -14,7 +16,8 @@ st.title("Jin's chatPDF bot")
 pdf = st.file_uploader("PDF파일을 올려주세요")
 
 
-if st.session_state.pdffile == None and st.session_state.vector_store is None :
+if st.session_state.pdffile == None and st.session_state.vector_store is None and st.session_state.uploaded = False :
+  time.sleep(1)
   pdffile = client.files.create(
     file=pdf,
     purpose="user_data"
