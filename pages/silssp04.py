@@ -34,7 +34,7 @@ if pdf !=None and st.session_state.vector_store is None :
 
 prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
-if prompt !="" and prompt != st.session_state.ppt:
+if prompt !="":
   response = client.responses.create(
     model="gpt-4.1-mini",
     input=[
