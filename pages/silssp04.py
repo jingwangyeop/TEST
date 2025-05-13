@@ -11,8 +11,7 @@ if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
 if 'pdffile' not in st.session_state:
     st.session_state.pdffile = None
-if 'ppt' not in st.session_state:
-    st.session_state.ppt = None
+
     
 if pdf !=None and st.session_state.vector_store is None :
   pdffile = client.files.create(
@@ -34,7 +33,6 @@ if pdf !=None and st.session_state.vector_store is None :
   st.button("Delete Vector Store", on_click=delete)
 
 prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
-st.session_state.ppt = prompt
 
 if prompt !="" and prompt != st.session_state.ppt:
   response = client.responses.create(
