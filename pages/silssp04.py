@@ -14,7 +14,7 @@ st.title("Jin's chatPDF bot")
 pdf = st.file_uploader("PDF파일을 올려주세요")
 
 
-if st.session_state.pdffile = None and st.session_state.vector_store is None :
+if st.session_state.pdffile == None and st.session_state.vector_store is None :
   pdffile = client.files.create(
     file=pdf,
     purpose="user_data"
