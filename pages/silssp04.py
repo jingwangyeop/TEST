@@ -53,7 +53,9 @@ if prompt !="":
     }]
   )
   st.write(response.output_text)
+  def delete():
+    if "vector_store" in st.session_state and st.session_state.vector_store is not None:
+        client.vector_stores.delete(st.session_state.vector_store.id)
+        st.session_state.vector_store = None
+  st.button("Delete Vector Store", on_click=delete)
 
-def delete ():
-  dltvts = client.vector_stores.delete(st.session_state.vector_store.id)
-st.button("Delete Vector Store", on_click=delete)
