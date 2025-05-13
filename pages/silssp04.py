@@ -27,6 +27,11 @@ if pdf !=None and st.session_state.vector_store is None :
   )
   st.session_state.vector_store = vector_store
   st.session_state.pdffile = pdffile
+  def delete():
+    if "vector_store" in st.session_state and st.session_state.vector_store is not None:
+        client.vector_stores.delete(st.session_state.vector_store.id)
+        st.session_state.vector_store = None
+  st.button("Delete Vector Store", on_click=delete)
 
 prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 st.session_state.ppt = prompt
@@ -56,9 +61,4 @@ if prompt !="" and prompt != st.session_state.ppt:
     }]
   )
   st.write(response.output_text)
-  def delete():
-    if "vector_store" in st.session_state and st.session_state.vector_store is not None:
-        client.vector_stores.delete(st.session_state.vector_store.id)
-        st.session_state.vector_store = None
-  st.button("Delete Vector Store", on_click=delete)
 
