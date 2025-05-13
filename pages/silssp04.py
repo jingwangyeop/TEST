@@ -30,7 +30,8 @@ if pdf !=None and st.session_state.vector_store is None :
     if "vector_store" in st.session_state and st.session_state.vector_store is not None:
         client.vector_stores.delete(st.session_state.vector_store.id)
         st.session_state.vector_store = None
-  st.button("Delete Vector Store", on_click=delete)
+        client.files.delete(pdffile.id)
+  st.button("Delete PDF All", on_click=delete)
 
 prompt = st.text_input("PDF 내용에 대해 질문해주세요 :")
 
