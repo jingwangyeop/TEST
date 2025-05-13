@@ -3,18 +3,18 @@ from openai import OpenAI
 apikey = st.session_state.api_key
 client = OpenAI(api_key=apikey)
 
-
-st.title("Jin's chatPDF bot")
-pdf = st.file_uploader("PDF파일을 올려주세요")
-
 if 'vector_store' not in st.session_state:
     st.session_state.vector_store = None
 if 'pdffile' not in st.session_state:
     st.session_state.pdffile = None
 if 'uploaded' not in st.session_state:
     st.session_state.uploaded = False  # 새 키 추가
-    
-if pdf !=None and st.session_state.vector_store is None :
+   
+st.title("Jin's chatPDF bot")
+pdf = st.file_uploader("PDF파일을 올려주세요")
+
+
+if st.session_state.pdffile = None and st.session_state.vector_store is None :
   pdffile = client.files.create(
     file=pdf,
     purpose="user_data"
@@ -27,13 +27,13 @@ if pdf !=None and st.session_state.vector_store is None :
   )
   st.session_state.vector_store = vector_store
   st.session_state.pdffile = pdffile
-  st.session_state.uploaded = True  # ✅ 업로드 완료 표시
+  st.session_state.uploaded = True
 def delete():
   if "vector_store" in st.session_state and st.session_state.vector_store is not None:
       client.vector_stores.delete(st.session_state.vector_store.id)
       st.session_state.vector_store = None
       client.files.delete(st.session_state.pdffile.id)
-      st.session_state.uploaded = False  # ✅ 다시 업로드 가능하게
+      st.session_state.uploaded = False
 st.button("Delete PDF All", on_click=delete)
 
 
