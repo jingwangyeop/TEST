@@ -31,7 +31,7 @@ def delete():
   if "vector_store" in st.session_state and st.session_state.vector_store is not None:
       client.vector_stores.delete(st.session_state.vector_store.id)
       st.session_state.vector_store = None
-      client.files.delete(pdffile.id)
+      client.files.delete(st.session_state.pdffile.id)
 st.button("Delete PDF All", on_click=delete)
 
 
